@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/layout :: head('Producto')}"></head>
+<body>
+<nav th:replace="~{fragments/layout :: navbar}"></nav>
+
+<main class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-7">
+            <div class="card card-caffeto">
+                <div class="card-body p-4">
+                    <h1 class="titulo-seccion h4 mb-4" th:text="${producto.id == null} ? 'Nuevo producto' : 'Editar producto'">Producto</h1>
+
+                    <form th:action="@{/productos/guardar}" th:object="${producto}" method="post" novalidate>
+                        <input type="hidden" th:field="*{id}">
+                        <input type="hidden" th:field="*{activo}">
+
+                        <div class="row g-3">
+                            <div class="col-md-8">
+                                <label for="nombre" class="form-label fw-semibold">Nombre</label>
+                                <input type="text" id="nombre" th:field="*{nombre}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid'" maxlength="80">
+                                <div class="invalid-feedback" th:errors="*{nombre}">Error</div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="categoria" class="form-label fw-semibold">Categoría</label>
+                                <select id="categoria" th:field="*{categoria}" class="form-select"
+                                        th:classappend="${#fields.hasErrors('categoria')} ? 'is-invalid'">
+                                    <option value="" disabled th:selected="${producto.categoria == null}">Seleccione…</option>
+                                    <option th:each="c : ${categorias}" th:value="${c.id}" th:text="${c.nombre}">Cafés</option>
+                                </select>
+                                <div class="invalid-feedback" th:errors="*{categoria}">Error</div>
+                            </div>
+                            <div class="col-12">
+                                <label for="descripcion" class="form-label fw-semibold">Descripción</label>
+                                <input type="text" id="descripcion" th:field="*{descripcion}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('descripcion')} ? 'is-invalid'" maxlength="200">
+                                <div class="invalid-feedback" th:errors="*{descripcion}">Error</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="precio" class="form-label fw-semibold">Precio (S/)</label>
+                                <input type="number" step="0.01" min="0.01" id="precio" th:field="*{precio}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('precio')} ? 'is-invalid'">
+                                <div class="invalid-feedback" th:errors="*{precio}">Error</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="stock" class="form-label fw-semibold">Stock</label>
+                                <input type="number" min="0" id="stock" th:field="*{stock}" class="form-control"
+                                       th:classappend="${#fields.hasErrors('stock')} ? 'is-invalid'">
+                                <div class="invalid-feedback" th:errors="*{stock}">Error</div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <a th:href="@{/productos}" class="btn btn-outline-secondary">Cancelar</a>
+                            <button type="submit" class="btn btn-caffeto">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script th:replace="~{fragments/layout :: scripts}"></script>
+</body>
+</html>

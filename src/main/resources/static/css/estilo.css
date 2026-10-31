@@ -1,0 +1,81 @@
+/* Paleta anaranjada de Don Caffeto */
+:root {
+    --cafe-primario: #d9671a;
+    --cafe-oscuro: #7a3e12;
+    --cafe-claro: #fff4ea;
+    --cafe-texto: #3b2a1e;
+}
+
+body {
+    background: var(--cafe-claro);
+    color: var(--cafe-texto);
+    min-height: 100vh;
+}
+
+.caffeto-nav {
+    background: linear-gradient(90deg, var(--cafe-oscuro), var(--cafe-primario));
+}
+
+.btn-caffeto {
+    background-color: var(--cafe-primario);
+    border-color: var(--cafe-primario);
+    color: #fff;
+}
+.btn-caffeto:hover {
+    background-color: var(--cafe-oscuro);
+    border-color: var(--cafe-oscuro);
+    color: #fff;
+}
+
+.btn-outline-caffeto {
+    color: var(--cafe-primario);
+    border-color: var(--cafe-primario);
+}
+.btn-outline-caffeto:hover {
+    background-color: var(--cafe-primario);
+    color: #fff;
+}
+
+.card-caffeto {
+    border: none;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(122, 62, 18, 0.12);
+}
+
+.indicador {
+    border-left: 6px solid var(--cafe-primario);
+}
+.indicador .valor {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--cafe-oscuro);
+}
+
+.titulo-seccion {
+    color: var(--cafe-oscuro);
+    font-weight: 700;
+}
+
+.table thead th {
+    background: var(--cafe-oscuro);
+    color: #fff;
+    font-weight: 600;
+}
+
+.producto-tarjeta {
+    transition: transform .15s ease, box-shadow .15s ease;
+}
+.producto-tarjeta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(122, 62, 18, 0.18);
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--cafe-primario);
+    box-shadow: 0 0 0 .2rem rgba(217, 103, 26, .25);
+}
+
+.badge-stock-bajo {
+    background-color: #f5b041;
+    color: #3b2a1e;
+}
